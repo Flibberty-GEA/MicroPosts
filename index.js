@@ -24,26 +24,42 @@ function submitPost() {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
 
-  const data = {
-    title,
-    body
+  if (title === '' || body === '') {
+    ui.showAlert('Please fill in all fields', 'alert p-4 mb-4 text-white bg-red border-green-darker')
+  } else {
+    const data = {
+      title,
+      body
+    }
+
+    // Create Post
+    http.post('http://localhost:3000/posts', data)
+      .then(() => {
+        ui.showAlert('Post added', 'alert p-4 mb-4 text-white bg-green border-green-darker');
+        ui.clearFields();
+        getPosts();
+      })
+      .catch(err => {
+        console.error(err)
+      });
   }
 
-  // Create Post
-  http.post('http://localhost:3000/posts', data)
-    .then(() => {
-      ui.showAlert('Post added', 'alert p-4 mb-4 text-white bg-green border-green-darker');
-      ui.clearFields();
-      getPosts();
-    })
-    .catch(err => {
-      console.error(err)
-    });
 }
 
 // Delete post
 function deletePost(e) {
-  // console.log(e.target);
+  if(e.target.classList.contains('delete')) {
+    const id = e.target.dataset.id;
+    if(confirm('Are you sure?')) {
+      http.delete(`http://localhost:3000/posts/${id}`)
+        .then(data => {
+          ui.showAlert('Post removed', 'alert p-4 mb-4 text-white bg-green border-green-darker');
+          getPosts();
+        })
+        .catch(err => console.log(err));
+    }
+  }
+  e.preventDefault();
 }
 
 // Enable edit state
