@@ -50,7 +50,10 @@ function deletePost(e) {
 function enableEdit(e) {
   if(e.target.classList.contains('edit')) {
     const id = e.target.dataset.id;
-    console.log(e.target.previousElementSibling.textContent)
+    const body = e.target.previousElementSibling.textContent;
+    const title = e.target.previousElementSibling.previousElementSibling.textContent;
+    // console.log(e.target.previousElementSibling.previousElementSibling.textContent);
+    // console.log(e.target.previousElementSibling.textContent);
     // console.log(e.target.dataset.id);
   }
   // console.log(e.target);
