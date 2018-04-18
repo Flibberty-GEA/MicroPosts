@@ -43,10 +43,16 @@ function submitPost() {
 
 // Delete post
 function deletePost(e) {
-  console.log(e.target);
+  // console.log(e.target);
 }
 
 // Enable edit state
 function enableEdit(e) {
-  console.log(e.target);
+  if(e.target.classList.contains('edit')) {
+    const id = e.target.dataset.id;
+    console.log(e.target.previousElementSibling.textContent)
+    // console.log(e.target.dataset.id);
+  }
+  // console.log(e.target);
+  e.preventDefault();
 }
