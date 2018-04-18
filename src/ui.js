@@ -16,8 +16,7 @@ class UI {
       <div class="border mb-3 p-4">
         <h4 class="font-sans font-hairline text-2xl mb-4">${post.title}</h4>
         <p class="font-sans font-hairline mb-2">${post.body}</p>
-        <a href="#" class="edit" data-id="${post.id}"></a>
-        <button class="mr-4 edit">
+        <button class="mr-4 edit" data-id="${post.id}">
           <svg class="w-4 h-4 fill-current text-blue pointer-events-none" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 55.25 55.25" style="enable-background:new 0 0 55.25 55.25;" xml:space="preserve">
           <path d="M52.618,2.631c-3.51-3.508-9.219-3.508-12.729,0L3.827,38.693C3.81,38.71,3.8,38.731,3.785,38.749
