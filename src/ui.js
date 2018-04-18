@@ -115,7 +115,7 @@ class UI {
       cardForm.insertBefore(button, formEnd);
     } else {
       this.postSubmit.textContent = 'Post It';
-      this.postSubmit.className = 'post-submit bg-orange hover:bg-orange-dark text-white font-sans font-hairline w-full block py-3';
+      this.postSubmit.className = 'post-submit bg-blue hover:bg-blue-dark text-white font-sans font-hairline w-full block py-3';
       // Remove cancel button if it is there
       if (document.querySelector('.post-cancel')) {
         document.querySelector('.post-cancel').remove();

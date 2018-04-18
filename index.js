@@ -26,25 +26,40 @@ function getPosts() {
 function submitPost() {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
-
-  if (title === '' || body === '') {
-    ui.showAlert('Please fill in all fields', 'alert p-4 mb-4 text-white bg-red border-green-darker')
-  } else {
-    const data = {
+  const id = document.querySelector('#id').value;
+      const data = {
       title,
       body
     }
 
-    // Create Post
-    http.post('http://localhost:3000/posts', data)
-      .then(() => {
-        ui.showAlert('Post added', 'alert p-4 mb-4 text-white bg-green border-green-darker');
-        ui.clearFields();
-        getPosts();
-      })
-      .catch(err => {
-        console.error(err)
-      });
+  // Validate input
+  if (title === '' || body === '') {
+    ui.showAlert('Please fill in all fields', 'alert p-4 mb-4 text-white bg-red border-green-darker')
+  } else {
+    // Check for ID
+    if (id === '') {
+      // Create Post
+      http.post('http://localhost:3000/posts', data)
+        .then(() => {
+          ui.showAlert('Post added', 'alert p-4 mb-4 text-white bg-green border-green-darker');
+          ui.clearFields();
+          getPosts();
+        })
+        .catch(err => {
+          console.error(err)
+        });
+    } else {
+      // Update Post
+      http.put(`http://localhost:3000/posts/${id}`, data)
+        .then(() => {
+          ui.showAlert('Post updated', 'alert p-4 mb-4 text-white bg-green border-green-darker');
+          ui.changeFormState('add');
+          getPosts();
+        })
+        .catch(err => {
+          console.error(err)
+        });
+    }
   }
 
 }
