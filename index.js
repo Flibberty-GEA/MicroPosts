@@ -26,10 +26,11 @@ function submitPost() {
   // Create Post
   http.post('http://localhost:3000/posts', data)
     .then(() => {
+      ui.showAlert('Post added', 'alert p-4 mb-4 text-white bg-green border-green-darker');
+      ui.clearFields();
       getPosts();
     })
     .catch(err => {
       console.error(err)
     });
-
 }
