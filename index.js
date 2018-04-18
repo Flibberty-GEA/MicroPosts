@@ -52,9 +52,15 @@ function enableEdit(e) {
     const id = e.target.dataset.id;
     const body = e.target.previousElementSibling.textContent;
     const title = e.target.previousElementSibling.previousElementSibling.textContent;
-    // console.log(e.target.previousElementSibling.previousElementSibling.textContent);
-    // console.log(e.target.previousElementSibling.textContent);
-    // console.log(e.target.dataset.id);
+
+    const data = {
+      id,
+      title,
+      body
+    }
+
+    // Fill form with current post
+    ui.fillForm(data);
   }
   // console.log(e.target);
   e.preventDefault();
