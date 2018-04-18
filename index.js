@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', getPosts);
 // Listen for add post
 document.querySelector('.post-submit').addEventListener('click', submitPost);
 
+// Listen for delete
+document.querySelector('#posts').addEventListener('click', deletePost);
+
+// Listen for edit state
+document.querySelector('#posts').addEventListener('click', enableEdit);
+
 function getPosts() {
   http.get('http://localhost:3000/posts')
     .then(data => ui.showPosts(data))
@@ -33,4 +39,14 @@ function submitPost() {
     .catch(err => {
       console.error(err)
     });
+}
+
+// Delete post
+function deletePost(e) {
+  console.log(e.target);
+}
+
+// Enable edit state
+function enableEdit(e) {
+  console.log(e.target);
 }
